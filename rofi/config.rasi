@@ -1,0 +1,8 @@
+configuration {
+              modi: "run,ssh,drun,window,combi,power:~/.config/rofi/rofi-power-menu/rofi-power-menu --no-symbols --choices=shutdown/reboot/logout --confirm=shutdown/reboot";
+              font: "monoki Nerd Font 12";
+              combi-modi: [drun,run,window];
+              terminal: "alacritty";
+}
+
+@theme "~/.config/rofi/themes/dt-center.rasi"
