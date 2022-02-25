@@ -1,0 +1,28 @@
+#+TITLE: Jon Saxton's Configuration Files
+
+* Introduction
+This is a collection of configuration files that I am currently using on my Manjaro Linux system. I had originally installed Manjaro KDE. I wanted an Arch-based Linux distribution, but I wanted something easy to install, and kind of wanted to check out KDE again. However, I eventually dropped KDE in favor of Xmonad and begun really configuring the system by editing actual text-based configuration files. /Some/ of the files I use to make my system mine are now up here mostly for backup. Many of these are based off of [[http://distro.tube][Derek Tayler's]] configurations, but I have modified them to my liking, hence I have a reason to host them myself.
+* Background
+If you don't want to know more about me and my journey you don't need to read this section. In 2007 I began experimenting with Linux after sourcing a Red Hat Linux install disc. I was having difficulty installing this version of GNU/Linux and, rather than giving up entirely, I decided to see if their was a version, I later learned they were called distrobutions, of GNU/Linux that I could get installed on the Sony VAIO I was using at the time. This is when I learned of Ubuntu.
+
+For awhile that was the operating system I used, in fact I even sourced a Dell laptop that came pre-installed with it. Later, however, I learned that GNU/Linux had other desktop environments and switched to Kubuntu and KDE. A few years later I even installed Arch Linux on a tablet PC. It was on Arch that I first discovered the fun of working with text-based configuration files (I believe this is called "ricing" hence the name of the repo). I had a very limited netbook that I was using as the tablet was hard to lug around and was starting to have issued. This computer didn't have a hard drive and was very limited, but GNU/Linux is powerful and I had it installed on two SD cards, one held the operating system itself while the other held my personal files (home directory). Because of limited RAM and storage I installed i3 and mostly used terminal-based applications.
+
+Eventually I fell away from Linux after acquiring an Alienware X51 with Windows 8 on it. Windows was much better for gaming at the time (still is if I'm honest) so I kept Windows even though I wasn't a fan of 8. 8.1 did fix some issues and 10 seemed like a good system. Unfortunately, 11 was not supported on the custom-built computer I was/am using. As such, and after hearing gaming on Linux was much better I decided to install GNU/Linux on the system. I remembered how long Arch took to set up (and this was with set up scripts that they provided at the time) so I didn't want to go through that process, but I loved Arch's rolling release schedule and its fast package manager. Fortunately I found Manjaro and the rest is basically history.
+
+Only not quite as I decided on Manjaro KDE since I was a fan of that desktop environment, but eventually starting tinkering again. I installed Emacs and played with EXWM, but eventually switched to Xmonad and now I'm configuring things just the way I like just how I did on i3 and Arch. I decided I didn't want to lose all this work so I created this github repo so that I would have a backup in case something went wrong with my configurations or the system.
+* Programs
+The programs that I have configured here are:
+1. Alacritty - fast terminal emulator
+2. Doom Emacs - my IDE and organizer
+3. Dunst - libnotify compatible notifier
+4. picom - stand-alone desktop compositor
+5. qutebrowser - PyQT-based simple web browser
+6. rofi - window switcher, app launcher, and dmenu replacement
+7. xmobar - Xmonad panel
+8. Xmonad - powerful tiling window manager
+* Literate configurations
+Two configuration files are provide with Org-mode files to make them easier to comment, I would like to do more but literate configurations must be written in a program language that emacs recognizes:
+1. Xmonad - README.org
+2. Doom Emacs - just the main configuration as config.org
+* Credits
+I would like to thank [[http://distro.tube][Derek Taylor]] for his excellent tutorials and for sharing his configuration files. We have similar tastes so it made writing my own configurations much easier.
