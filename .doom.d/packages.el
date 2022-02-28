@@ -55,4 +55,4 @@
 ;;(package! dmenu)
 ;;(package! exwm)
 (package! org-bullets)
-(package! org-journal)
+;;(package! org-journal)

@@ -31,50 +31,11 @@
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (require 'org-journal)
-  (setq org-directory "~/Documents/Org/"
-        org-journal-dir "~/Documents/Org/Journal/"
-        org-journal-date-format "%d-%b-%Y (%a)"
-        org-journal-file-format "%d-%m-%Y.org"
-        org-agenda-files '("~/Documents/Org/agenda.org" "~/Documents/Org/todo.org")
+  (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
+        org-agenda-files '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/Org/todo.org")
         org-log-done 'time
         ;; org-log done 'note
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))
 )
 
 (setq display-line-numbers-type t)
-
-(require `mu4e)
-(require `org-mu4e)
-
-(setq mu4e-headers-skip-duplicates t)
-
-(setq mu4e-get-mail-command "offlineimap")
-
-(setq mu4e-contexts
-      `(, (make-mu4e-context
-           :name "Primary"
-           :match-func (lambda(msg) (when msg
-                                      (string-prefix-p "/Primary" (mu4e-message-field msg :maildir))))
-           :vars `(
-                   (mu4e-trash-folder . "/Primary/Trash")
-                   (mu4e-refile-folder . "/Primary/[Google Mail].All Mail")
-                   ))
-          , (make-mu4e-context
-             :name "Live"
-             :match-func (lambda (msg) (when msg
-                                         (string-prefix-p "/Live" (mu4e-message-field msg :maildir))))
-             :vars '(
-                     (mu4e-trash-folder . "/Live/Deleted")
-                     (mu4e-refile-folder . "/Live/Archive")
-                     ))
-            ))
-
-(setq mu4e-sent-folder "/sent"
-      mu4e-drafts-folder "/drafts"
-      user-mail-address "kawaii_kisachan@live.com"
-      smtpmail-smtp-user "kawaii_kisachan@live.com"
-      smtpmail-default-smtp-server "smtp.office365.com"
-      smtpmail-smtp-server "smtp.office365.com"
-      smtpmail-smtp-service 587)
-
-(global-set-key  (kbd "M-m") 'mu4e)
