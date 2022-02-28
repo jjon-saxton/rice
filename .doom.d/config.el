@@ -1,6 +1,3 @@
-(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
-
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
@@ -30,7 +27,6 @@
 (after! org
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (require 'org-journal)
   (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
         org-agenda-files '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/Org/todo.org")
         org-log-done 'time
