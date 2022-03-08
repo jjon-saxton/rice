@@ -407,7 +407,7 @@ I have made my workspaces in xmobar "clickable." Clickable workspaces means the 
 
 #+begin_src haskell
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" game ", " chat ", " www ", " sys ", " txt "]
+myWorkspaces = [" 1:game ", " 2:dev "," 3:chat ", " 4:www ", " 5:sys "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 #+END_SRC
 
@@ -433,11 +433,12 @@ myManageHook = composeAll
      , className =? "toolbar"         --> doFloat
      , className =? "Yad"             --> doCenterFloat
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
-     , className =? "discord"   --> doShift ( myWorkspaces !! 1 )
+     , className =? "discord"   --> doShift ( myWorkspaces !! 2 )
      , className =? "lutris"             --> doShift ( myWorkspaces !! 0 )
      , className =? "steam"            --> doShift ( myWorkspaces !! 0 )
-     , className =? "qutebrowser"       -->doShift ( myWorkspaces !! 2 )
+     , className =? "qutebrowser"       -->doShift ( myWorkspaces !! 3 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , title =? "Select an EXE or MSI file" --> doFloat -- Float lutris Select EXE Dialog
      , isFullscreen -->  doFullFloat
      ] <+> namedScratchpadManageHook myScratchPads
 #+END_SRC

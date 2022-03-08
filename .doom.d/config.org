@@ -7,6 +7,7 @@
 - [[#identity][Identity]]
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
+- [[#org-publishing][Org Publishing]]
 - [[#mu4e][mu4e]]
 
 * Introduction
@@ -82,6 +83,29 @@ Provides some helpful settings for org mode including agenda and journaling. The
 )
 
 #+end_src
+
+* Org Publishing
+ #+begin_src elisp
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("yayoi world"
+         :base-directory "~/Documents/Org/Yayoi"
+         :base-extension "org"
+         :publishing-directory "~/public_html/yayoi/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t)
+      ("org-static"
+       :base-directory "~/Documents/Org/"
+       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+       :publishing-directory "~/public_html"
+       :recrusive t
+       :publishing-function org-publish-attachment)
+))
+ #+end_src
+
 * mu4e
 Configures mu4e as a mail client using offlineimap as the backend. Also put the display line number setting here for some reason. Should probably move that
 
@@ -101,8 +125,8 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
            :match-func (lambda(msg) (when msg
                                       (string-prefix-p "/Primary" (mu4e-message-field msg :maildir))))
            :vars `(
-                   (mu4e-trash-folder . "/Primary/Trash")
-                   (mu4e-refile-folder . "/Primary/[Google Mail].All Mail")
+                   (mu4e-trash-folder . "/Primary/Deleted Messages")
+                   (mu4e-refile-folder . "/Primary/Archive")
                    ))
           , (make-mu4e-context
              :name "Live"

@@ -56,3 +56,4 @@
 ;;(package! exwm)
 (package! org-bullets)
 (package! org-journal)
+(package! dashboard)

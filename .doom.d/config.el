@@ -41,6 +41,25 @@
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))
 )
 
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("yayoi world"
+         :base-directory "~/Documents/Org/Yayoi"
+         :base-extension "org"
+         :publishing-directory "~/public_html/yayoi/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t)
+      ("org-static"
+       :base-directory "~/Documents/Org/"
+       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+       :publishing-directory "~/public_html"
+       :recrusive t
+       :publishing-function org-publish-attachment)
+))
+
 (setq display-line-numbers-type t)
 
 (require `mu4e)
@@ -56,8 +75,8 @@
            :match-func (lambda(msg) (when msg
                                       (string-prefix-p "/Primary" (mu4e-message-field msg :maildir))))
            :vars `(
-                   (mu4e-trash-folder . "/Primary/Trash")
-                   (mu4e-refile-folder . "/Primary/[Google Mail].All Mail")
+                   (mu4e-trash-folder . "/Primary/Deleted Messages")
+                   (mu4e-refile-folder . "/Primary/Archive")
                    ))
           , (make-mu4e-context
              :name "Live"
