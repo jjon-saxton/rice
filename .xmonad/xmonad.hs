@@ -126,6 +126,7 @@ myStartupHook = do
     spawnOnce "volumeicon"
     spawnOnce "udiskie --tray"
     spawnOnce "/usr/bin/emacs --daemon" -- emacs daemon for the emacsclient
+    spawnOnce "lutris"
 
     spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
@@ -326,7 +327,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| wideAccordion
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" game ", " chat ", " www ", " sys ", " txt "]
+myWorkspaces = [" 1:game ", " 2:dev "," 3:chat ", " 4:www ", " 5:sys "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
@@ -347,11 +348,12 @@ myManageHook = composeAll
      , className =? "toolbar"         --> doFloat
      , className =? "Yad"             --> doCenterFloat
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
-     , className =? "discord"   --> doShift ( myWorkspaces !! 1 )
+     , className =? "discord"   --> doShift ( myWorkspaces !! 2 )
      , className =? "lutris"             --> doShift ( myWorkspaces !! 0 )
      , className =? "steam"            --> doShift ( myWorkspaces !! 0 )
-     , className =? "qutebrowser"       -->doShift ( myWorkspaces !! 2 )
+     , className =? "qutebrowser"       -->doShift ( myWorkspaces !! 3 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , title =? "Select an EXE or MSI file" --> doFloat -- Float lutris Select EXE Dialog
      , isFullscreen -->  doFullFloat
      ] <+> namedScratchpadManageHook myScratchPads
 
@@ -471,6 +473,7 @@ myKeys =
         , ("M-e d", spawn (myEmacs ++ ("--eval '(dired nil)'"))) -- dired
         , ("M-e i", spawn (myEmacs ++ ("--eval '(erc)'")))       -- erc irc client
         , ("M-e s", spawn (myEmacs ++ ("--eval '(eshell)'")))    -- eshell
+        , ("M-e m", spawn (myEmacs ++ ("--eval '(mu4e)'")))
         , ("M-e v", spawn (myEmacs ++ ("--eval '(+vterm/here nil)'"))) -- vterm if on Doom Emacs
         , ("M-e w", spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'"))) -- eww browser if on Doom Emacs
         , ("M-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'")))
