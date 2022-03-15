@@ -4,6 +4,7 @@
 - [[#introduction][Introduction]]
 - [[#spell-checking][Spell Checking]]
 - [[#dired-configuration][Dired Configuration]]
+- [[#dashboard][Dashboard]]
 - [[#identity][Identity]]
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
@@ -46,6 +47,105 @@ Some quality of life improvements for dired. Mostly just sorting things nicer at
 (setq-default dired-listing-switches "-alh")
 #+end_src
 
+Added some keybindings for dired to make it easier to use it as a file manager
+
+| Command                | Action                                        | Keybinding |
+|------------------------+-----------------------------------------------+------------|
+| dired-view-file        | View file in dired                            | SPC d v    |
+| dired-up-directory     | Go up in directory tree                       | h          |
+| dired-find-file        | Go down in directory tree (or open if file)   | l          |
+| dired-next-line        | Move down to next line                        | j          |
+| dired-previous-line    | Move up to previous line                      | k          |
+| dired-mark             | Mark file at point                            | m          |
+| dired-unmark           | Unmark file at point                          | u          |
+| dired-do-copy          | Copy current file or marked files             | C          |
+| dired-do-rename        | Rename current file or marked files           | R          |
+| dired-create-driectory | Create new empty directory                    | +          |
+| dired-subtree-toggle   | Toggle viewing subtree at point               | TAB        |
+| dired-do-chgrp         | Change the group of marked files              | g G        |
+| dired-do-chmod         | Change the mode (permissions) of marked files | M          |
+| dired-do-chown         | Change the owner of marked files              | O          |
+
+#+begin_src elisp
+(map! :leader
+      (:prefix ("d" . "dired")
+       :desc "Open dired" "d" #'dired
+       :desc "Dired jump to current" "j" #'dired-jump)
+      (:after dired
+       (:map dired-mode-map
+        :desc "Peep-dired images previews" "d p" #'peep-dired
+        :desc "Dired view file" "d v" #'dired-view-file)))
+
+(evil-define-key 'normal dired-mode-map
+  (kbd "M-RET") 'dired-display-file
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-open-file ; use dired-find-file instead of dired-open.
+  (kbd "m") 'dired-mark
+  (kbd "t") 'dired-toggle-marks
+  (kbd "u") 'dired-unmark
+  (kbd "C") 'dired-do-copy
+  (kbd "D") 'dired-do-delete
+  (kbd "J") 'dired-goto-file
+  (kbd "M") 'dired-do-chmod
+  (kbd "O") 'dired-do-chown
+  (kbd "P") 'dired-do-print
+  (kbd "R") 'dired-do-rename
+  (kbd "T") 'dired-do-touch
+  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring.
+  (kbd "+") 'dired-create-directory
+  (kbd "-") 'dired-up-directory
+  (kbd "% l") 'dired-downcase
+  (kbd "% u") 'dired-upcase
+  (kbd "; d") 'epa-dired-do-decrypt
+  (kbd "; e") 'epa-dired-do-encrypt)
+#+end_src
+
+Also adding a few keybindings for when peep-dired-mode is enabled
+| Command              | Action                                   | Keybinding |
+|----------------------+------------------------------------------+------------|
+| peep-dired           | Toggle previews within dired             | SPC d p    |
+| peep-dired-next-file | Move to next file in peep-dired-mode     | j          |
+| peep-dired-prev-file | Move to previous file in peep-dired-mode | k          |
+
+#+begin_src elisp
+(evil-define-key 'normal peep-dired-mode-map
+  (kbd "j") 'peep-dired-next-file
+  (kbd "k") 'peep-dired-prev-file)
+(add-hook 'peep-dired-hook 'evil-normalize-keymaps)
+#+end_src
+
+We also get some file icons set up in dired
+#+begin_src elisp
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+#+end_src
+
+* Dashboard
+Add an extensible start up screen showing recent files, bookmarks, agenda items, and more rather than simple help links.
+#+begin_src elisp
+
+(use-package dashboard
+  :init
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "\nKEYBINDINGS:\nFind file (SPC .)\nFind recent file (SPC f r)\nOpen dired file manager (SPC d d)\nList keybindings (SPC h b b)")
+  (setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")
+  (setq dashboard-items `((recents . 5)
+        (agenda . 5)
+        (bookmarks . 5)))
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons `((recents . "file-text")
+                                    (bookmarks . "book"))))
+
+#+end_src
+
+An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*
+#+begin_src elisp
+
+(setq doom-fallback-buffer "*dashboard*")
+
+#+end_src
+
 * Identity
 Sets my identity for some functions.
 
@@ -53,7 +153,7 @@ Sets my identity for some functions.
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Jon Saxton"
-      user-mail-address "jjon.saxton@gmail.com")
+      user-mail-address "kawaii_kisachan@live.com")
 #+end_src
 * Theme
 Sets the doom emacs theme!
