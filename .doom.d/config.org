@@ -127,13 +127,13 @@ Let's direct dired-open to some more sensible apps for some files.
                              ("jpg" . "feh")
                              ("png" . "feh")
                              ("mkv" . "mpv")
+                             ("mp3" . "mpv")
                              ("mp4" . "mpv")))
 #+end_src
 
 * Dashboard
 Add an extensible start up screen showing recent files, bookmarks, agenda items, and more rather than simple help links.
 #+begin_src elisp
-
 (use-package dashboard
   :init
   (setq dashboard-set-heading-icons t)
@@ -147,7 +147,6 @@ Add an extensible start up screen showing recent files, bookmarks, agenda items,
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons `((recents . "file-text")
                                     (bookmarks . "book"))))
-
 #+end_src
 
 An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*

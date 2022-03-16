@@ -64,6 +64,7 @@
                              ("jpg" . "feh")
                              ("png" . "feh")
                              ("mkv" . "mpv")
+                             ("mp3" . "mpv")
                              ("mp4" . "mpv")))
 
 (use-package dashboard
