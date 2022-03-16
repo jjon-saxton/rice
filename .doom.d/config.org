@@ -2,7 +2,6 @@
 #+PROPERTY: header-args :tangle config.el
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
-- [[#spell-checking][Spell Checking]]
 - [[#dired-configuration][Dired Configuration]]
 - [[#dashboard][Dashboard]]
 - [[#emms][EMMS]]
@@ -18,13 +17,6 @@ This begins our emacs configuration by setting font sizes! Use `org-babel-tangle
 #+begin_src elisp
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
       doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
-#+end_src
-
-* Spell Checking
-
-#+begin_src elisp
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 #+end_src
 
 * Dired Configuration
@@ -151,8 +143,7 @@ Add an extensible start up screen showing recent files, bookmarks, agenda items,
 
 An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*
 #+begin_src elisp
-(setq doom-fallback-buffer "*dashboard*")
-(setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+(setq doom-fallback-buffer-name "*dashboard*")
 #+end_src
 
 * EMMS
@@ -280,6 +271,12 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
       user-mail-address "kawaii_kisachan@live.com"
       smtpmail-smtp-user "kawaii_kisachan@live.com"
       smtpmail-default-smtp-server "smtp.office365.com"
+      smtpmail-smtp-server "smtp.office365.com"
+      smtpmail-smtp-service 587)
+
+(global-set-key  (kbd "M-m") 'mu4e)
+#+end_src
+smtp-server "smtp.office365.com"
       smtpmail-smtp-server "smtp.office365.com"
       smtpmail-smtp-service 587)
 

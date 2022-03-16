@@ -1,9 +1,6 @@
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
       doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
 
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
 ;;Dired config!
 (defun mydired-sort ()
   "Sort dired listings with directories first."
@@ -81,8 +78,7 @@
   (dashboard-modify-heading-icons `((recents . "file-text")
                                     (bookmarks . "book"))))
 
-(setq doom-fallback-buffer "*dashboard*")
-(setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+(setq doom-fallback-buffer-name "*dashboard*")
 
 (emms-all)
 (emms-default-players)
@@ -106,6 +102,10 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Jon Saxton"
       user-mail-address "kawaii_kisachan@live.com")
+
+(setq erc-default-server "irc.libera.chat"
+      erc-default-port 6667
+      erc-nick "Yayoi")
 
 (setq doom-theme 'doom-one)
 
