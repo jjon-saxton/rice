@@ -57,5 +57,5 @@
 (package! org-bullets)
 (package! org-journal)
 (package! dash)
-(package! minimap)
 (package! dashboard)
+(package! minimap)

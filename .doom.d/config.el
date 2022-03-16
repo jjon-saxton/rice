@@ -82,6 +82,7 @@
                                     (bookmarks . "book"))))
 
 (setq doom-fallback-buffer "*dashboard*")
+(setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
 
 (emms-all)
 (emms-default-players)
