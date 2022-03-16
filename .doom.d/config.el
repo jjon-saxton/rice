@@ -27,6 +27,7 @@
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
+        :desc "Cue file to emms playlist" "d c" #'emms-add-dired
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -59,6 +60,12 @@
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
+(setq dired-open-extensions '(("gif" . "feh")
+                             ("jpg" . "feh")
+                             ("png" . "feh")
+                             ("mkv" . "mpv")
+                             ("mp4" . "mpv")))
+
 (use-package dashboard
   :init
   (setq dashboard-set-heading-icons t)
@@ -74,6 +81,24 @@
                                     (bookmarks . "book"))))
 
 (setq doom-fallback-buffer "*dashboard*")
+
+(emms-all)
+(emms-default-players)
+(emms-mode-line 1)
+(emms-playing-time 1)
+(setq emms-source-file-default-directory "/mnt/plex/Music/"
+      emms-playlist-buffer-name "*Music*"
+      emms-info-asynchronously t
+      emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+
+(map! :leader
+      (:prefix ("e" . "EMMS audio player")
+       :desc "Go to emms playlist" "a" #'emms-playlist-mode-go
+       :desc "Emms browser" "b" #'emms-browser
+       :desc "Emms pause track" "x" #'emms-pause
+       :desc "Emms stop track" "s" #'emms-stop
+       :desc "Emms play previous track" "p" #'emms-previous
+       :desc "Emms play next track" "n" #'emms-next))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.

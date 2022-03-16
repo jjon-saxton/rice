@@ -5,6 +5,7 @@
 - [[#spell-checking][Spell Checking]]
 - [[#dired-configuration][Dired Configuration]]
 - [[#dashboard][Dashboard]]
+- [[#emms][EMMS]]
 - [[#identity][Identity]]
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
@@ -74,6 +75,7 @@ Added some keybindings for dired to make it easier to use it as a file manager
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
+        :desc "Cue file to emms playlist" "d c" #'emms-add-dired
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -119,6 +121,15 @@ We also get some file icons set up in dired
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
 
+Let's direct dired-open to some more sensible apps for some files.
+#+begin_src elisp
+(setq dired-open-extensions '(("gif" . "feh")
+                             ("jpg" . "feh")
+                             ("png" . "feh")
+                             ("mkv" . "mpv")
+                             ("mp4" . "mpv")))
+#+end_src
+
 * Dashboard
 Add an extensible start up screen showing recent files, bookmarks, agenda items, and more rather than simple help links.
 #+begin_src elisp
@@ -141,14 +152,43 @@ Add an extensible start up screen showing recent files, bookmarks, agenda items,
 
 An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*
 #+begin_src elisp
-
 (setq doom-fallback-buffer "*dashboard*")
+#+end_src
 
+* EMMS
+Sets up the Emacs Multimedia System for playing audio, hopefully
+#+begin_src elisp
+(emms-all)
+(emms-default-players)
+(emms-mode-line 1)
+(emms-playing-time 1)
+(setq emms-source-file-default-directory "/mnt/plex/Music/"
+      emms-playlist-buffer-name "*Music*"
+      emms-info-asynchronously t
+      emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+#+end_src
+
+Adds some helpful keybindings for EMMS
+| Command               | Action                          | Keybinding |
+|-----------------------+---------------------------------+------------|
+| emms-playlist-mode-go | Switch to the playlist buffer   | SPC e a    |
+| emms-pause            | Pause the current track         | SPC e x    |
+| emms-stop             | Stop playback                   | SPC e s    |
+| emms-previous         | Play previous track in playlist | SPC e p    |
+| emms-next             | Play next track in playlist     | SPC e n    |
+#+begin_src elisp
+(map! :leader
+      (:prefix ("e" . "EMMS audio player")
+       :desc "Go to emms playlist" "a" #'emms-playlist-mode-go
+       :desc "Emms browser" "b" #'emms-browser
+       :desc "Emms pause track" "x" #'emms-pause
+       :desc "Emms stop track" "s" #'emms-stop
+       :desc "Emms play previous track" "p" #'emms-previous
+       :desc "Emms play next track" "n" #'emms-next))
 #+end_src
 
 * Identity
 Sets my identity for some functions.
-
 #+begin_src elisp
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -157,7 +197,6 @@ Sets my identity for some functions.
 #+end_src
 * Theme
 Sets the doom emacs theme!
-
 #+begin_src elisp
 
 (setq doom-theme 'doom-one)
@@ -166,7 +205,6 @@ Sets the doom emacs theme!
 
 * Org Mode
 Provides some helpful settings for org mode including agenda and journaling. The `org-todo-keywords` are set for my school-based todo list and may change in the future. If you use `org` mode its a good idea to change the `org-directory`!
-
 #+begin_src elisp
 (after! org
   (require 'org-bullets)
@@ -208,7 +246,6 @@ Provides some helpful settings for org mode including agenda and journaling. The
 
 * mu4e
 Configures mu4e as a mail client using offlineimap as the backend. Also put the display line number setting here for some reason. Should probably move that
-
 #+begin_src  elisp
 (setq display-line-numbers-type t)
 
