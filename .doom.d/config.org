@@ -221,7 +221,7 @@ Provides some helpful settings for org mode including agenda and journaling. The
         ("yayoi world"
          :base-directory "~/Documents/Org/Yayoi"
          :base-extension "org"
-         :publishing-directory "~/public_html/yayoi/"
+         :publishing-directory "~/public_html/world/"
          :recursive t
          :publishing-function org-html-publish-to-html
          :headline-levels 4
