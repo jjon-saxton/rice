@@ -135,7 +135,7 @@ Add an extensible start up screen showing recent files, bookmarks, agenda items,
 An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*
 #+begin_src elisp
 
-(setq doom-fallback-buffer "*dashboard*")
+(setq doom-fallback-buffer-name "*dashboard*")
 
 #+end_src
 

@@ -70,7 +70,7 @@
   (dashboard-modify-heading-icons `((recents . "file-text")
                                     (bookmarks . "book"))))
 
-(setq doom-fallback-buffer "*dashboard*")
+(setq doom-fallback-buffer-name "*dashboard*")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
