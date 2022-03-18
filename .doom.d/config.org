@@ -4,7 +4,6 @@
 - [[#introduction][Introduction]]
 - [[#dired-configuration][Dired Configuration]]
 - [[#dashboard][Dashboard]]
-- [[#emms][EMMS]]
 - [[#identity][Identity]]
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
@@ -13,8 +12,8 @@
 This begins our emacs configuration by setting font sizes! Use `org-babel-tangle` (C-c C-v t) whenever this is modified to save changes to the configuration then run 'doom sync' in a terminal and/or 'doom/refresh' in emacs to reload the configuration.
 
 #+begin_src elisp
-(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
+(setq doom-font (font-spec :family "MesloLGS NF" :size 12)
+      doom-variable-pitch-font (font-spec :family "MesloLGS NF" :size 12))
 #+end_src
 
 * Dired Configuration
@@ -65,7 +64,7 @@ Added some keybindings for dired to make it easier to use it as a file manager
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
-        :desc "Cue file to emms playlist" "d c" #'emms-add-dired
+        ;:desc "Cue file to emms playlist" "d c" #'emms-add-dired
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -144,27 +143,6 @@ An extra line is needed to ensure that the emacsclient always opens on *dashboar
 (setq doom-fallback-buffer-name "*dashboard*")
 #+end_src
 
-(setq doom-fallback-buffer-name "*dashboard*")
-
-Adds some helpful keybindings for EMMS
-| Command               | Action                          | Keybinding |
-|-----------------------+---------------------------------+------------|
-| emms-playlist-mode-go | Switch to the playlist buffer   | SPC e a    |
-| emms-pause            | Pause the current track         | SPC e x    |
-| emms-stop             | Stop playback                   | SPC e s    |
-| emms-previous         | Play previous track in playlist | SPC e p    |
-| emms-next             | Play next track in playlist     | SPC e n    |
-#+begin_src elisp
-(map! :leader
-      (:prefix ("e" . "EMMS audio player")
-       :desc "Go to emms playlist" "a" #'emms-playlist-mode-go
-       :desc "Emms browser" "b" #'emms-browser
-       :desc "Emms pause track" "x" #'emms-pause
-       :desc "Emms stop track" "s" #'emms-stop
-       :desc "Emms play previous track" "p" #'emms-previous
-       :desc "Emms play next track" "n" #'emms-next))
-#+end_src
-
 * Identity
 Sets my identity for some functions.
 #+begin_src elisp
@@ -176,9 +154,7 @@ Sets my identity for some functions.
 * Theme
 Sets the doom emacs theme!
 #+begin_src elisp
-
 (setq doom-theme 'doom-one)
-
 #+end_src
 
 * Org Mode
@@ -188,7 +164,7 @@ Provides some helpful settings for org mode including agenda and journaling. The
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-directory "/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
-        org-agenda-files '("/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/todo.org")
+        org-agenda-files '("/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")
         org-log-done 'time
         ;; org-log done 'note
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))

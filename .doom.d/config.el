@@ -1,5 +1,5 @@
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(setq doom-font (font-spec :family "MesloLGS NF" :size 12)
+      doom-variable-pitch-font (font-spec :family "MesloLGS NF" :size 12))
 
 ;;Dired config!
 (defun mydired-sort ()
@@ -24,6 +24,7 @@
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
+        ;:desc "Cue file to emms playlist" "d c" #'emms-add-dired
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -56,6 +57,13 @@
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
+(setq dired-open-extensions '(("gif" . "feh")
+                             ("jpg" . "feh")
+                             ("png" . "feh")
+                             ("mkv" . "mpv")
+                             ("mp3" . "mpv")
+                             ("mp4" . "mpv")))
+
 (use-package dashboard
   :init
   (setq dashboard-set-heading-icons t)
@@ -83,7 +91,7 @@
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-directory "/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
-        org-agenda-files '("/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/todo.org")
+        org-agenda-files '("/Users/trixielulamoon/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")
         org-log-done 'time
         ;; org-log done 'note
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))
