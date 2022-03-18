@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! all-the-icons-dired)
 (package! peep-dired)
 (package! dired-open)
 (package! dired-subtree)
