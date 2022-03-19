@@ -1,5 +1,6 @@
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
       doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
+(minimap-mode 1)
 
 ;;Dired config!
 (defun mydired-sort ()
@@ -103,10 +104,6 @@
 (setq user-full-name "Jon Saxton"
       user-mail-address "kawaii_kisachan@live.com")
 
-(setq erc-default-server "irc.libera.chat"
-      erc-default-port 6667
-      erc-nick "Yayoi")
-
 (setq doom-theme 'doom-one)
 
 (after! org
@@ -117,7 +114,7 @@
         org-journal-dir "~/Documents/Org/Journal/"
         org-journal-date-format "%d-%b-%Y (%a)"
         org-journal-file-format "%d-%m-%Y.org"
-        org-agenda-files '("~/Documents/Org/agenda.org" "~/Documents/Org/todo.org")
+        org-agenda-files '("~/Documents/Org/agenda.org")
         org-log-done 'time
         ;; org-log done 'note
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))
@@ -129,7 +126,7 @@
         ("yayoi world"
          :base-directory "~/Documents/Org/Yayoi"
          :base-extension "org"
-         :publishing-directory "~/public_html/yayoi/"
+         :publishing-directory "~/public_html/world/"
          :recursive t
          :publishing-function org-html-publish-to-html
          :headline-levels 4

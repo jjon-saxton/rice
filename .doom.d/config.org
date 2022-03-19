@@ -17,6 +17,7 @@ This begins our emacs configuration by setting font sizes! Use `org-babel-tangle
 #+begin_src elisp
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
       doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
+(minimap-mode 1)
 #+end_src
 
 * Dired Configuration
@@ -205,7 +206,7 @@ Provides some helpful settings for org mode including agenda and journaling. The
         org-journal-dir "~/Documents/Org/Journal/"
         org-journal-date-format "%d-%b-%Y (%a)"
         org-journal-file-format "%d-%m-%Y.org"
-        org-agenda-files '("~/Documents/Org/agenda.org" "~/Documents/Org/todo.org")
+        org-agenda-files '("~/Documents/Org/agenda.org")
         org-log-done 'time
         ;; org-log done 'note
         org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STUDY(s)" "ASSIGNMENT(a)" "|" "DONE(d)" "CANCELLED(c)")))
@@ -271,12 +272,6 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
       user-mail-address "kawaii_kisachan@live.com"
       smtpmail-smtp-user "kawaii_kisachan@live.com"
       smtpmail-default-smtp-server "smtp.office365.com"
-      smtpmail-smtp-server "smtp.office365.com"
-      smtpmail-smtp-service 587)
-
-(global-set-key  (kbd "M-m") 'mu4e)
-#+end_src
-smtp-server "smtp.office365.com"
       smtpmail-smtp-server "smtp.office365.com"
       smtpmail-smtp-service 587)
 
