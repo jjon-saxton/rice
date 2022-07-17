@@ -125,8 +125,6 @@ myStartupHook = do
     spawnOnce "blueman-applet"
     spawnOnce "volumeicon"
     spawnOnce "udiskie --tray"
-    spawnOnce "/usr/bin/emacs --daemon" -- emacs daemon for the emacsclient
-    spawnOnce "lutris"
 
     spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 

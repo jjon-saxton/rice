@@ -9,10 +9,11 @@
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
 - [[#org-publishing][Org Publishing]]
+- [[#exwm][EXWM]]
 - [[#mu4e][mu4e]]
 
 * Introduction
-This begins our emacs configuration by setting font sizes! Use `org-babel-tangle` (C-c C-v t) whenever this is modified to save changes to the configuration then run 'doom sync' in a terminal and/or 'doom/refresh' in emacs to reload the configuration.
+This begins our Emacs configuration by setting font sizes! Use `org-babel-tangle` (C-c C-v t) whenever this is modified to save changes to the configuration then run 'doom sync' in a terminal and/or 'doom/refresh' in Emacs to reload the configuration.
 
 #+begin_src elisp
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
@@ -121,7 +122,12 @@ Let's direct dired-open to some more sensible apps for some files.
                              ("png" . "feh")
                              ("mkv" . "mpv")
                              ("mp3" . "mpv")
-                             ("mp4" . "mpv")))
+                             ("mp4" . "mpv")
+                             ("zip" . "file-roller")
+                             ("rar" . "file-roller")
+                             ("7z" . "file-roller")
+                             ("tar" . "file-roller")
+                             ("xz" . "file-roller")))
 #+end_src
 
 * Dashboard
@@ -235,6 +241,40 @@ Provides some helpful settings for org mode including agenda and journaling. The
        :publishing-function org-publish-attachment)
 ))
  #+end_src
+
+* EXWM
+#+begin_src elisp
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+
+(add-hook 'exwm-update-class-hook
+          (lambda ()
+                 (exwm-workspace-rename-buffer exwm-class-name)))
+
+(defun exwm-logout ()
+  (interactive)
+  (recentf-save-list)
+  (save-some-buffers)
+  (start-process-shell-command "logout" nil "lxsession-logout"))
+
+(exwm-input-set-key (kbd "s-Q") 'exwm-logout)
+(exwm-input-set-key (kbd "s-w") 'quit-window)
+(exwm-input-set-key (kbd "s-q") 'evil-window-delete)
+(exwm-input-set-key (kbd "s-/") 'dmenu)
+(exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
+(exwm-input-set-key (kbd "s-l") 'evil-window-right)
+(exwm-input-set-key (kbd "s-h") 'evil-window-left)
+(exwm-input-set-key (kbd "s-j") 'evil-window-down)
+(exwm-input-set-key (kbd "s-k") 'evil-window-up)
+(exwm-input-set-key (kbd "s-s") 'evil-window-split)
+(exwm-input-set-key (kbd "s-v") 'evil-window-vsplit)
+
+(display-time)
+#+end_src
 
 * mu4e
 Configures mu4e as a mail client using offlineimap as the backend. Also put the display line number setting here for some reason. Should probably move that

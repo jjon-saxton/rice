@@ -63,7 +63,12 @@
                              ("png" . "feh")
                              ("mkv" . "mpv")
                              ("mp3" . "mpv")
-                             ("mp4" . "mpv")))
+                             ("mp4" . "mpv")
+                             ("zip" . "file-roller")
+                             ("rar" . "file-roller")
+                             ("7z" . "file-roller")
+                             ("tar" . "file-roller")
+                             ("xz" . "file-roller")))
 
 (use-package dashboard
   :init
@@ -138,6 +143,37 @@
        :recrusive t
        :publishing-function org-publish-attachment)
 ))
+
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+
+(add-hook 'exwm-update-class-hook
+          (lambda ()
+                 (exwm-workspace-rename-buffer exwm-class-name)))
+
+(defun exwm-logout ()
+  (interactive)
+  (recentf-save-list)
+  (save-some-buffers)
+  (start-process-shell-command "logout" nil "lxsession-logout"))
+
+(exwm-input-set-key (kbd "s-Q") 'exwm-logout)
+(exwm-input-set-key (kbd "s-w") 'quit-window)
+(exwm-input-set-key (kbd "s-q") 'evil-window-delete)
+(exwm-input-set-key (kbd "s-/") 'dmenu)
+(exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
+(exwm-input-set-key (kbd "s-l") 'evil-window-right)
+(exwm-input-set-key (kbd "s-h") 'evil-window-left)
+(exwm-input-set-key (kbd "s-j") 'evil-window-down)
+(exwm-input-set-key (kbd "s-k") 'evil-window-up)
+(exwm-input-set-key (kbd "s-s") 'evil-window-split)
+(exwm-input-set-key (kbd "s-v") 'evil-window-vsplit)
+
+(display-time)
 
 (setq display-line-numbers-type t)
 
