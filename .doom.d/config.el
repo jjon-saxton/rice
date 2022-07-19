@@ -166,8 +166,8 @@
 
 (exwm-input-set-key (kbd "s-Q") 'exwm-logout)
 (exwm-input-set-key (kbd "C-s-q") 'exwm-lock)
-(exwm-input-set-key (kbd "s-q") 'quit-window)
-(exwm-input-set-key (kbd "s-w") 'evil-window-delete)
+(exwm-input-set-key (kbd "s-w") 'quit-window)
+(exwm-input-set-key (kbd "s-q") 'kill-this-buffer)
 (exwm-input-set-key (kbd "s-/") 'dmenu)
 (exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
 (exwm-input-set-key (kbd "s-l") 'evil-window-right)
@@ -176,6 +176,11 @@
 (exwm-input-set-key (kbd "s-k") 'evil-window-up)
 (exwm-input-set-key (kbd "s-s") 'evil-window-split)
 (exwm-input-set-key (kbd "s-v") 'evil-window-vsplit)
+(exwm-input-set-key (kbd "s-t") '+vterm/toggle)
+(exwm-input-set-key (kbd "s-<return>") 'execute-extended-command)
+(exwm-input-set-key (kbd "s-m") 'exwm-layout-toggle-fullscreen)
+(exwm-input-set-key (kbd "s-c") 'exwm-input-toggle-keyboard)
+(exwm-input-set-key (kbd "s-d") 'dired)
 
 (display-time)
 
