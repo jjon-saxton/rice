@@ -106,8 +106,6 @@ shopt -s checkwinsize
 
 shopt -s expand_aliases
 
-# export QT_SELECT=4
-
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
@@ -141,7 +139,7 @@ neofetch
 export EDITOR="vim"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 alias lsa="ls -lha"
+alias lin="/home/yayoi/lin"
+alias win="/home/yayoi/win"
+alias pak=pamac
 
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION

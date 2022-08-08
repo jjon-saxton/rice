@@ -109,7 +109,7 @@
 (setq user-full-name "Jon Saxton"
       user-mail-address "kawaii_kisachan@live.com")
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-dracula)
 
 (after! org
   (require 'org-bullets)
@@ -166,7 +166,7 @@
 
 (exwm-input-set-key (kbd "s-Q") 'exwm-logout)
 (exwm-input-set-key (kbd "C-s-q") 'exwm-lock)
-(exwm-input-set-key (kbd "s-w") 'quit-window)
+(exwm-input-set-key (kbd "s-w") '+workspace/close-window-or-workspace)
 (exwm-input-set-key (kbd "s-q") 'kill-this-buffer)
 (exwm-input-set-key (kbd "s-/") 'dmenu)
 (exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
