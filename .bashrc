@@ -139,7 +139,6 @@ neofetch
 export EDITOR="vim"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 alias lsa="ls -lha"
-alias lin="/home/yayoi/lin"
-alias win="/home/yayoi/win"
+alias checkupdates="/home/yayoi/update.sh"
 alias pak=pamac
 

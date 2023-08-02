@@ -291,7 +291,6 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
 (setq display-line-numbers-type t)
 
 (require `mu4e)
-(require `org-mu4e)
 
 (setq mu4e-headers-skip-duplicates t)
 

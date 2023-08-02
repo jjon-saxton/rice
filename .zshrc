@@ -11,7 +11,9 @@ fi
 
 export EDITOR="vim"
 export PATH="$HOME/.emacs.d/bin:$PATH"
-alias lsa="ls -lha"
+alias lsa="exa -al --color=always --group-directories-first"
 alias nano="vim"
+alias package="$HOME/simple_yay.sh"
+alias pac="package"
 
 neofetch

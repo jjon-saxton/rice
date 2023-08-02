@@ -187,7 +187,7 @@
 (setq display-line-numbers-type t)
 
 (require `mu4e)
-(require `org-mu4e)
+;; (require `org-mu4e)
 
 (setq mu4e-headers-skip-duplicates t)
 
