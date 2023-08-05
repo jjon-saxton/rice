@@ -9,8 +9,10 @@
 - [[#theme][Theme]]
 - [[#org-mode][Org Mode]]
 - [[#org-publishing][Org Publishing]]
+- [[#transparency][Transparency]]
 - [[#exwm][EXWM]]
 - [[#mu4e][mu4e]]
+- [[#elfeed][elfeed]]
 
 * Introduction
 This begins our Emacs configuration by setting font sizes! Use `org-babel-tangle` (C-c C-v t) whenever this is modified to save changes to the configuration then run 'doom sync' in a terminal and/or 'doom/refresh' in Emacs to reload the configuration.
@@ -223,16 +225,24 @@ Provides some helpful settings for org mode including agenda and journaling. The
 * Org Publishing
  #+begin_src elisp
 (require 'ox-publish)
+(setq org-html-validation-link nil
+      org-html-head-include-scripts nil
+      org-html-head-include-default-style nil
+      org-html-extension "htm" )
+
 (setq org-publish-project-alist
       '(
-        ("yayoi world"
-         :base-directory "~/Documents/Org/Yayoi"
+        ("jon1996"
+         :base-directory "/srv/http1996/org/"
          :base-extension "org"
-         :publishing-directory "~/public_html/world/"
+         :publishing-directory "/srv/http1996/pages/"
          :recursive t
          :publishing-function org-html-publish-to-html
-         :headline-levels 4
-         :auto-preamble t)
+         :auto-preamble t
+         :with-author nil
+         :with-creator t
+         :with-toc nil
+         :section-numbers nil)
       ("org-static"
        :base-directory "~/Documents/Org/"
        :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
@@ -242,6 +252,13 @@ Provides some helpful settings for org mode including agenda and journaling. The
 ))
  #+end_src
 
+* Transparency
+With Emacs version 29, true transparency has been added, I am not sure this line will do anything yet, but may let a background through after one is selected and after Emacs is updated to version 29
+
+#+begin_src elisp
+;; (add-to-list 'default-frame-alist '(alpha-background . 80)) commented out until Manjaro has Emacs 29, maybe causing long load times!
+
+#+end_src
 * EXWM
 #+begin_src elisp
 (require 'exwm)
@@ -270,6 +287,7 @@ Provides some helpful settings for org mode including agenda and journaling. The
 (exwm-input-set-key (kbd "s-q") 'kill-this-buffer)
 (exwm-input-set-key (kbd "s-/") 'dmenu)
 (exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
+(exwm-input-set-key (kbd "M-<tab>") 'exwm-workspace-switch)
 (exwm-input-set-key (kbd "s-l") 'evil-window-right)
 (exwm-input-set-key (kbd "s-h") 'evil-window-left)
 (exwm-input-set-key (kbd "s-j") 'evil-window-down)
@@ -324,4 +342,11 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
       smtpmail-smtp-service 587)
 
 (global-set-key  (kbd "M-m") 'mu4e)
+#+end_src
+* elfeed
+Some configurations for elfeed, mostly just auto-fetching and a global keybinding
+#+begin_src elsip
+(global-set-key (kbd "M-r") 'elfeed)
+
+(add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 #+end_src

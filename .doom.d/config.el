@@ -126,16 +126,24 @@
 )
 
 (require 'ox-publish)
+(setq org-html-validation-link nil
+      org-html-head-include-scripts nil
+      org-html-head-include-default-style nil
+      org-html-extension "htm" )
+
 (setq org-publish-project-alist
       '(
-        ("yayoi world"
-         :base-directory "~/Documents/Org/Yayoi"
+        ("jon1996"
+         :base-directory "/srv/http1996/org/"
          :base-extension "org"
-         :publishing-directory "~/public_html/world/"
+         :publishing-directory "/srv/http1996/pages/"
          :recursive t
          :publishing-function org-html-publish-to-html
-         :headline-levels 4
-         :auto-preamble t)
+         :auto-preamble t
+         :with-author nil
+         :with-creator t
+         :with-toc nil
+         :section-numbers nil)
       ("org-static"
        :base-directory "~/Documents/Org/"
        :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
@@ -143,6 +151,8 @@
        :recrusive t
        :publishing-function org-publish-attachment)
 ))
+
+;; (add-to-list 'default-frame-alist '(alpha-background . 80)) commented out until Manjaro has Emacs 29, maybe causing long load times!
 
 (require 'exwm)
 (require 'exwm-config)
@@ -170,6 +180,7 @@
 (exwm-input-set-key (kbd "s-q") 'kill-this-buffer)
 (exwm-input-set-key (kbd "s-/") 'dmenu)
 (exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
+(exwm-input-set-key (kbd "M-<tab>") 'exwm-workspace-switch)
 (exwm-input-set-key (kbd "s-l") 'evil-window-right)
 (exwm-input-set-key (kbd "s-h") 'evil-window-left)
 (exwm-input-set-key (kbd "s-j") 'evil-window-down)
@@ -187,7 +198,6 @@
 (setq display-line-numbers-type t)
 
 (require `mu4e)
-;; (require `org-mu4e)
 
 (setq mu4e-headers-skip-duplicates t)
 
@@ -221,3 +231,7 @@
       smtpmail-smtp-service 587)
 
 (global-set-key  (kbd "M-m") 'mu4e)
+
+(global-set-key (kbd "M-r") 'elfeed)
+
+(add-hook! 'elfeed-search-mode-hook #'elfeed-update)

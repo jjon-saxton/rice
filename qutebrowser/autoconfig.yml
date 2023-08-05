@@ -6,12 +6,18 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      normal:
+        gF: spawn --userscript openfeeds
   colors.hints.fg:
     global: purple
   colors.webpage.darkmode.enabled:
     global: false
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.javascript.can_access_clipboard:
+    global: true
   content.notifications.enabled:
     https://www.reddit.com: false
   url.start_pages:
