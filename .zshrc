@@ -15,5 +15,6 @@ alias lsa="exa -al --color=always --group-directories-first"
 alias nano="vim"
 alias package="$HOME/simple_yay.sh"
 alias pac="package"
+alias startq="qtile start -b wayland"
 
 neofetch

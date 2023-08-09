@@ -154,47 +154,6 @@
 
 ;; (add-to-list 'default-frame-alist '(alpha-background . 80)) commented out until Manjaro has Emacs 29, maybe causing long load times!
 
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-default)
-
-(require 'exwm-systemtray)
-(exwm-systemtray-enable)
-
-(add-hook 'exwm-update-class-hook
-          (lambda ()
-                 (exwm-workspace-rename-buffer exwm-class-name)))
-
-(defun exwm-logout ()
-  (interactive)
-  (recentf-save-list)
-  (save-some-buffers)
-  (start-process-shell-command "logout" nil "lxsession-logout"))
-(defun exwm-lock ()
-  (interactive)
-  (start-process-shell-command "slock" nil "slock"))
-
-(exwm-input-set-key (kbd "s-Q") 'exwm-logout)
-(exwm-input-set-key (kbd "C-s-q") 'exwm-lock)
-(exwm-input-set-key (kbd "s-w") '+workspace/close-window-or-workspace)
-(exwm-input-set-key (kbd "s-q") 'kill-this-buffer)
-(exwm-input-set-key (kbd "s-/") 'dmenu)
-(exwm-input-set-key (kbd "s-<tab>") 'exwm-workspace-switch-to-buffer)
-(exwm-input-set-key (kbd "M-<tab>") 'exwm-workspace-switch)
-(exwm-input-set-key (kbd "s-l") 'evil-window-right)
-(exwm-input-set-key (kbd "s-h") 'evil-window-left)
-(exwm-input-set-key (kbd "s-j") 'evil-window-down)
-(exwm-input-set-key (kbd "s-k") 'evil-window-up)
-(exwm-input-set-key (kbd "s-s") 'evil-window-split)
-(exwm-input-set-key (kbd "s-v") 'evil-window-vsplit)
-(exwm-input-set-key (kbd "s-t") '+vterm/toggle)
-(exwm-input-set-key (kbd "s-<return>") 'execute-extended-command)
-(exwm-input-set-key (kbd "s-m") 'exwm-layout-toggle-fullscreen)
-(exwm-input-set-key (kbd "s-c") 'exwm-input-toggle-keyboard)
-(exwm-input-set-key (kbd "s-d") 'dired)
-
-(display-time)
-
 (setq display-line-numbers-type t)
 
 (require `mu4e)
