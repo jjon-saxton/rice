@@ -26,6 +26,7 @@
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
         :desc "Cue file to emms playlist" "d c" #'emms-add-dired
+        :desc "Dired open file width xdg-open" "d x" #'dired-open-xdg
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -63,37 +64,25 @@
                              ("png" . "feh")
                              ("mkv" . "mpv")
                              ("mp3" . "mpv")
-                             ("mp4" . "mpv")
-                             ("zip" . "file-roller")
-                             ("rar" . "file-roller")
-                             ("7z" . "file-roller")
-                             ("tar" . "file-roller")
-                             ("xz" . "file-roller")))
+                             ("mp4" . "mpv")))
 
-(use-package dashboard
-  :init
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "\nKEYBINDINGS:\nFind file (SPC .)\nFind recent file (SPC f r)\nOpen dired file manager (SPC d d)\nList keybindings (SPC h b b)")
-  (setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")
-  (setq dashboard-items `((recents . 5)
-        (agenda . 5)
-        (bookmarks . 5)))
-  :config
-  (dashboard-setup-startup-hook)
-  (dashboard-modify-heading-icons `((recents . "file-text")
-                                    (bookmarks . "book"))))
-
-(setq doom-fallback-buffer-name "*dashboard*")
-
+(require 'emms-setup)
+(require 'emms-player-mpd)
 (emms-all)
-(emms-default-players)
-(emms-mode-line 1)
-(emms-playing-time 1)
+;(emms-default-players)
+(setq emms-player-list '(emms-player-mpd))
+(add-to-list 'emms-info-functions 'emms-info-mpd)
+(add-to-list 'emms-player-list 'emms-player-mpd)
+(emms-mode-line-mode 1)
+(emms-playing-time-mode 1)
 (setq emms-source-file-default-directory "/mnt/plex/Music/"
       emms-playlist-buffer-name "*Music*"
+      emms-player-mpd-server-name "localhost"
+      emms-player-mpd-server-port "6600"
+      emms-player-mpd-music-directory "/mnt/plex/Music/"
       emms-info-asynchronously t
       emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+(emms-player-mpd-connect)
 
 (map! :leader
       (:prefix ("e" . "EMMS audio player")
@@ -152,13 +141,13 @@
        :publishing-function org-publish-attachment)
 ))
 
-;; (add-to-list 'default-frame-alist '(alpha-background . 80)) commented out until Manjaro has Emacs 29, maybe causing long load times!
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (setq display-line-numbers-type t)
 
 (require `mu4e)
 
-(setq mu4e-headers-skip-duplicates t)
+(setq mu4e-search-skip-duplicates t)
 
 (setq mu4e-get-mail-command "offlineimap")
 

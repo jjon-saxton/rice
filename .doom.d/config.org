@@ -3,7 +3,6 @@
 * Table of Contents :toc:
 - [[#introduction][Introduction]]
 - [[#dired-configuration][Dired Configuration]]
-- [[#dashboard][Dashboard]]
 - [[#emms][EMMS]]
 - [[#identity][Identity]]
 - [[#theme][Theme]]
@@ -71,6 +70,7 @@ Added some keybindings for dired to make it easier to use it as a file manager
        (:map dired-mode-map
         :desc "Peep-dired images previews" "d p" #'peep-dired
         :desc "Cue file to emms playlist" "d c" #'emms-add-dired
+        :desc "Dired open file width xdg-open" "d x" #'dired-open-xdg
         :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
@@ -123,48 +123,29 @@ Let's direct dired-open to some more sensible apps for some files.
                              ("png" . "feh")
                              ("mkv" . "mpv")
                              ("mp3" . "mpv")
-                             ("mp4" . "mpv")
-                             ("zip" . "file-roller")
-                             ("rar" . "file-roller")
-                             ("7z" . "file-roller")
-                             ("tar" . "file-roller")
-                             ("xz" . "file-roller")))
-#+end_src
-
-* Dashboard
-Add an extensible start up screen showing recent files, bookmarks, agenda items, and more rather than simple help links.
-#+begin_src elisp
-(use-package dashboard
-  :init
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "\nKEYBINDINGS:\nFind file (SPC .)\nFind recent file (SPC f r)\nOpen dired file manager (SPC d d)\nList keybindings (SPC h b b)")
-  (setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")
-  (setq dashboard-items `((recents . 5)
-        (agenda . 5)
-        (bookmarks . 5)))
-  :config
-  (dashboard-setup-startup-hook)
-  (dashboard-modify-heading-icons `((recents . "file-text")
-                                    (bookmarks . "book"))))
-#+end_src
-
-An extra line is needed to ensure that the emacsclient always opens on *dashboard* rather than *scratch*
-#+begin_src elisp
-(setq doom-fallback-buffer-name "*dashboard*")
+                             ("mp4" . "mpv")))
 #+end_src
 
 * EMMS
 Sets up the Emacs Multimedia System for playing audio, hopefully
 #+begin_src elisp
+(require 'emms-setup)
+(require 'emms-player-mpd)
 (emms-all)
-(emms-default-players)
-(emms-mode-line 1)
-(emms-playing-time 1)
+;(emms-default-players)
+(setq emms-player-list '(emms-player-mpd))
+(add-to-list 'emms-info-functions 'emms-info-mpd)
+(add-to-list 'emms-player-list 'emms-player-mpd)
+(emms-mode-line-mode 1)
+(emms-playing-time-mode 1)
 (setq emms-source-file-default-directory "/mnt/plex/Music/"
       emms-playlist-buffer-name "*Music*"
+      emms-player-mpd-server-name "localhost"
+      emms-player-mpd-server-port "6600"
+      emms-player-mpd-music-directory "/mnt/plex/Music/"
       emms-info-asynchronously t
       emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+(emms-player-mpd-connect)
 #+end_src
 
 Adds some helpful keybindings for EMMS
@@ -255,7 +236,7 @@ Provides some helpful settings for org mode including agenda and journaling. The
 With Emacs version 29, true transparency has been added, I am not sure this line will do anything yet, but may let a background through after one is selected and after Emacs is updated to version 29
 
 #+begin_src elisp
-;; (add-to-list 'default-frame-alist '(alpha-background . 80)) commented out until Manjaro has Emacs 29, maybe causing long load times!
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 #+end_src
 * mu4e
@@ -265,7 +246,7 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
 
 (require `mu4e)
 
-(setq mu4e-headers-skip-duplicates t)
+(setq mu4e-search-skip-duplicates t)
 
 (setq mu4e-get-mail-command "offlineimap")
 
@@ -300,7 +281,7 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
 #+end_src
 * elfeed
 Some configurations for elfeed, mostly just auto-fetching and a global keybinding
-#+begin_src elsip
+#+begin_src elisp
 (global-set-key (kbd "M-r") 'elfeed)
 
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)

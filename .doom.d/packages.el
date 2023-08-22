@@ -50,12 +50,11 @@
 ;(unpin! t)
 
 (package! peep-dired)
+(package! ement)
 (package! dired-open)
 (package! dired-subtree)
 ;(package! dmenu)
 ;(package! exwm)
 (package! org-bullets)
 (package! org-journal)
-(package! dash)
-(package! dashboard)
 (package! minimap)
