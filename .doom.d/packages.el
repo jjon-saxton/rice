@@ -50,7 +50,6 @@
 ;(unpin! t)
 
 (package! peep-dired)
-(package! ement)
 (package! dired-open)
 (package! dired-subtree)
 ;(package! dmenu)
