@@ -17,9 +17,4 @@ alias package="$HOME/simple_yay.sh"
 alias pac="package"
 alias startq="qtile start -b wayland"
 
-if [ $SSH_CLIENT ] || [ $SSH_TTY ] || [ $DISPLAY ];
-then
-   neofetch
-else
-   qtile start -b wayland
-fi
+neofetch
