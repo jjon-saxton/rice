@@ -1,0 +1,29 @@
+#!/bin/bash
+
+_out="echo"
+if [[ ${TERM} == "dumb" ]]; then
+  _out="notify-send"
+fi
+
+output()
+{
+  ${_out} "wofi mpd control" "$@"
+}
+
+entries="pause\nprevious\nnext\nstop\nbrowse\n"
+#gui="emacsclient -c -a 'emacs' --eval '(emms-browser)'"
+selected=$(echo -e $entries|wofi --prompt 'mpd control' --width 300 --height 210 --dmenu --cache-file /dev/null)
+
+case $selected in
+  pause)
+    mpc toggle;;
+  previous)
+    mpc prev;;
+  next)
+    mpc next;;
+  stop)
+    mpc stop;;
+  browse)
+    #$gui;;
+    emacsclient -c -a 'emacs' --eval '(emms-browser)';;
+esac

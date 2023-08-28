@@ -1,0 +1,37 @@
+#!/bin/bash
+
+_out="echo"
+if [[ ${TERM} == "dumb" ]]; then
+  _out="notify-send"
+fi
+
+output()
+{
+  ${_out} "wofi application quick launcher" "$@"
+}
+
+entries="editor\nmail\nfiles\nbrowser\nterminal\n"
+
+emacs="emacsclient -c -a 'emacs' "
+editor=$emacs
+terminal="kitty"
+#fileman=pcmanfm-qt
+#mail=mail
+browser=qutebrowser
+
+selected=$(echo -e $entries|wofi --prompt 'application quick launcher' --width 300 --height 210 --dmenu --cache-file /dev/null)
+
+case $selected in
+  editor)
+    $editor;;
+  terminal)
+    $terminal;;
+  files)
+    #$fileman;;
+    ${emacs}--eval '(dired nil)';;
+  mail)
+    #$mail;;
+    ${emacs}--eval '(mu4e)';;
+  browser)
+    $browser;;
+esac

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+_out="echo"
+if [[ ${TERM} == "dumb" ]]; then
+  _out="notify-send"
+fi
+
+output()
+{
+  ${_out} "wofi power" "$@"
+}
+
+entries="shutdown\nlogout\nreboot"
+
+selected=$(echo -e $entries|wofi --prompt 'end session' --width 250 --height 210 --dmenu --cache-file /dev/null)
+
+case $selected in
+  logout)
+    loginctl terminate-session ${XDG_SESSION_ID-};;
+  suspend)
+    systemctl suspend;;
+  reboot)
+    if [[ "$(echo -e "no\nyes" | wofi --prompt "${choice}" --width 250 --height 100 --dmenu --cache-file /dev/null)" == "yes" ]];
+    then
+        systemctl reboot
+    else
+      output "User aborted!" && exit 0
+    fi;;
+  shutdown)
+    if [[ "$(echo -e "no\nyes" | wofi --prompt "${choice}" --width 250 --height 100 --dmenu --cache-file /dev/null)" == "yes" ]];
+    then
+        systemctl poweroff
+    else
+      output "User aborted!" && exit 0
+    fi
+esac
