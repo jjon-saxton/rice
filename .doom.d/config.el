@@ -17,6 +17,7 @@
   (mydired-sort))
 
 (setq-default dired-listing-switches "-alh")
+(setq delete-by-moving-to-trash t)
 
 (map! :leader
       (:prefix ("d" . "dired")
@@ -123,7 +124,7 @@
 (setq org-publish-project-alist
       '(
         ("jon1996"
-         :base-directory "/srv/http1996/org/"
+         :base-directory "~/Sites/jon1996/org/"
          :base-extension "org"
          :publishing-directory "/srv/http1996/pages/"
          :recursive t
