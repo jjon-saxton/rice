@@ -11,7 +11,7 @@ output()
 }
 
 entries="pause\nprevious\nnext\nstop\nbrowse\n"
-#gui="emacsclient -c -a 'emacs' --eval '(emms-browser)'"
+gui="cantata"
 selected=$(echo -e $entries|wofi --prompt 'mpd control' --width 300 --height 210 --dmenu --cache-file /dev/null)
 
 case $selected in
@@ -24,6 +24,6 @@ case $selected in
   stop)
     mpc stop;;
   browse)
-    #$gui;;
-    emacsclient -c -a 'emacs' --eval '(emms-browser)';;
+    $gui;;
+    #emacsclient -c -a 'emacs' --eval '(emms-browser)';;
 esac
