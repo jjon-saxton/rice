@@ -53,9 +53,6 @@
   (kbd "; d") 'epa-dired-do-decrypt
   (kbd "; e") 'epa-dired-do-encrypt)
 
-(evil-define-key 'normal peep-dired-mode-map
-  (kbd "j") 'peep-dired-next-file
-  (kbd "k") 'peep-dired-prev-file)
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
@@ -141,6 +138,8 @@
        :recrusive t
        :publishing-function org-publish-attachment)
 ))
+
+(set-frame-parameter nil 'alpha-background 80)
 
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 

@@ -106,9 +106,6 @@ Also adding a few keybindings for when peep-dired-mode is enabled
 | peep-dired-prev-file | Move to previous file in peep-dired-mode | k          |
 
 #+begin_src elisp
-(evil-define-key 'normal peep-dired-mode-map
-  (kbd "j") 'peep-dired-next-file
-  (kbd "k") 'peep-dired-prev-file)
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 #+end_src
 
@@ -237,6 +234,8 @@ Provides some helpful settings for org mode including agenda and journaling. The
 With Emacs version 29, true transparency has been added, I am not sure this line will do anything yet, but may let a background through after one is selected and after Emacs is updated to version 29
 
 #+begin_src elisp
+(set-frame-parameter nil 'alpha-background 80)
+
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 #+end_src

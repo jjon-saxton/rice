@@ -21,9 +21,32 @@ settings:
       like Gecko) Chrome/114.0.0.0 Safari/537.36
   content.javascript.clipboard:
     global: access
+  content.javascript.enabled:
+    global: true
   content.notifications.enabled:
     https://www.reddit.com: false
   content.private_browsing:
     global: false
+  spellcheck.languages:
+    global:
+    - en-US
+  statusbar.padding:
+    global:
+      bottom: 6
+      left: 8
+      right: 8
+      top: 6
+  url.searchengines:
+    global:
+      DEFAULT: https://onigirionegai.info/~jon/process.php?q={}
+      am: https://www.amazon.com/s?k={}
+      aw: https://wiki.archlinux.org/?search={}
+      dd: https://duckduckgo.com/?q={}
+      goog: https://www.google.com/search?q={}
+      hoog: https://hoogle.haskell.org/?hoogle={}
+      re: https://www.reddit.com/r/{}
+      ub: https://www.urbandictionary.com/define.php?term={}
+      wiki: https://en.wikipedia.org/wiki/{}
+      yt: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: http://localhost/
