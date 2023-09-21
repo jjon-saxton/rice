@@ -48,7 +48,6 @@ tooltip {
     border-radius: 10px;
 }
 
-#custom-language,
 #mpd,
 #window,
 #clock,
@@ -56,8 +55,7 @@ tooltip {
 #pulseaudio,
 #network,
 #workspaces,
-#tray,
-#backlight {
+#tray {
     background: #282a36;
     padding: 0px 10px;
     margin: 3px 0px;

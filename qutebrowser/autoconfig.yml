@@ -17,8 +17,8 @@ settings:
   colors.webpage.preferred_color_scheme:
     global: dark
   content.headers.user_agent:
-    global: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
-      like Gecko) Chrome/114.0.0.0 Safari/537.36
+    global: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+      Chrome/114.0.0.0 Safari/537.36
   content.javascript.clipboard:
     global: access
   content.javascript.enabled:
@@ -27,6 +27,32 @@ settings:
     https://www.reddit.com: false
   content.private_browsing:
     global: false
+  editor.command:
+    global:
+    - emacsclient
+    - -c
+    - +{line}:{column}
+    - '{file}'
+  editor.encoding:
+    global: utf-8
+  fileselect.folder.command:
+    global:
+    - kitty
+    - -e
+    - ranger
+    - --choosedir={}
+  fileselect.multiple_files.command:
+    global:
+    - kitty
+    - -e
+    - ranger
+    - --choosefiles={}
+  fileselect.single_file.command:
+    global:
+    - kitty
+    - -e
+    - ranger
+    - --choosefile={}
   spellcheck.languages:
     global:
     - en-US
