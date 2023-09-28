@@ -55,7 +55,7 @@
 
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
 
 (setq dired-open-extensions '(("gif" . "feh")
                              ("jpg" . "feh")

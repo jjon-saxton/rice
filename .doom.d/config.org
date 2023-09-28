@@ -111,7 +111,7 @@ Also adding a few keybindings for when peep-dired-mode is enabled
 
 We also get some file icons set up in dired
 #+begin_src elisp
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
 #+end_src
 
 Let's direct dired-open to some more sensible apps for some files.
