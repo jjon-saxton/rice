@@ -43,8 +43,8 @@ tooltip {
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #ff79c6;
+    color: #44475a;
+    background: #ff79c6;
     border-radius: 10px;
 }
 
@@ -56,11 +56,17 @@ tooltip {
 #network,
 #workspaces,
 #tray {
-    background: #282a36;
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
-    border: 1px solid #282836;
+}
+
+#mpd,
+#pulseaudio,
+#clock {
+    color: #44475a;
+    background: #bd93f9;
+    border: 1px solid #bd93f9;
 }
 
 #tray {
@@ -74,18 +80,20 @@ tooltip {
     margin-left: 10px;
     padding-right: 0px;
     padding-left: 5px;
+    border: 1px solid #282836;
 }
 
 #mpd {
-    color: #cba6f7;
     border-radius: 10px 0px 0px 10px;
     border-left: 0px;
     border-right: 0px;
 }
 
 #window {
+    color: #50fa7b;
+    background: #282a36;
     border-radius: 10px;
-    margin-left: 60px;
+    margin-left: 10px;
     margin-right: 60px;
 }
 
@@ -97,16 +105,13 @@ window#waybar.empty  #window{
 }
 
 #clock {
-    color: #cba6f7;
-    border-radius: 10px;
-    margin-left: 5px;
+    border-radius: 0px 10px 10px 0px;
+    margin-right: 10px;
     border-right: 0px;
 }
 
 #pulseaudio {
-    color: #cba6f7;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 0px 0px 0px;
     border-left: 0px;
     border-right: 0px;
-    margin-right: 5px;
 }

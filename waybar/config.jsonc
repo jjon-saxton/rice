@@ -6,21 +6,19 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 0,
-    "modules-left": [
-        "clock",
-        "hyprland/workspaces"
-    ],
-    "modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/window"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": [
-        "tray",
+        //"tray",
         "mpd",
-        "pulseaudio"
+        "pulseaudio",
+        "clock"
     ],
 
     "hyprland/window": {
         "format": "{}"
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
@@ -50,7 +48,6 @@
         "on": " "
       },
       "repeat-icons": {
-        "off": "<span color=\"#000000\"></span> ", // Icon grayed out when "repeat" is off
         "on": " "
       },
       "single-icons": {
