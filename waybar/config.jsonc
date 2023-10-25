@@ -37,9 +37,9 @@
         }
     },
     "mpd": {
-      "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {title} ",
-      "format-disconnected": "Disconnected ",
-      "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Not Playing ",
+      "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {title}",
+      "format-disconnected": " Disconnected",
+      "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Not Playing",
       "interval": 10,
       "consume-icons": {
         "on": " " // Icon shows only when "consume" is on
@@ -69,7 +69,7 @@
         "tooltip-format": "<big>{:%Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
      "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{icon} {volume}%",
         "tooltip": false,
         "format-muted": "Muted ",
         "on-click": "pamixer -t",
