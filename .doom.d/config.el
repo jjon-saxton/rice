@@ -170,13 +170,11 @@
                      ))
             ))
 
-(setq mu4e-sent-folder "/sent"
-      mu4e-drafts-folder "/drafts"
-      user-mail-address "kawaii_kisachan@live.com"
-      smtpmail-smtp-user "kawaii_kisachan@live.com"
-      smtpmail-default-smtp-server "smtp.office365.com"
-      smtpmail-smtp-server "smtp.office365.com"
-      smtpmail-smtp-service 587)
+(setq sendmail-program "/usr/bin/msmtp"
+      send-mail-function 'smtpmail-send-it
+      message-sendmail-f-is-evil t
+      message-sendmail-extra-arguments '("--read-envelope-from")
+      message-send-mail-function 'message-send-mail-with-sendmail)
 
 (global-set-key  (kbd "M-m") 'mu4e)
 
