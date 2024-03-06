@@ -183,3 +183,7 @@
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 
 (setq browse-url-browser-function 'eww-browse-url)
+
+(map! :leader
+      (:prefix ("o" . "open")
+       :desc "Browse the Web" "w" #'browse-web))

@@ -290,3 +290,13 @@ At this moment, all this is doing is ensuring that emacs starts by opening urls 
 #+begin_src elisp
 (setq browse-url-browser-function 'eww-browse-url)
 #+end_src
+
+Adds some helpful keybindings for eww
+| Command    | Action                             | Keybinding |
+|------------+------------------------------------+------------|
+| browse-web | Fetch the URL and renders the page | SPC o w    |
+#+begin_src elisp
+(map! :leader
+      (:prefix ("o" . "open")
+       :desc "Browse the Web" "w" #'browse-web))
+#+end_src
