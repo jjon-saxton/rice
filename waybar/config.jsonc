@@ -10,8 +10,9 @@
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         //"tray",
-        "mpd",
+        //"mpd",
         "pulseaudio",
+        "mpris",
         "clock"
     ],
 
@@ -24,6 +25,20 @@
         "on-click": "activate",
         //"format": "{icon}",
     },
+
+    "mpris": {
+      "format": "{player_icon} {title}",
+      "format-paused": "{status_icon} <i>{title}</i>",
+      "player-icons": {
+                      "default": "▶",
+                      "mpv": ""
+                      },
+      "status-icons": {
+        "paused": ""
+      },
+      // "ignored-players": ["firefox"]
+    },
+
     "mpd": {
       "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {title}",
       "format-disconnected": " Disconnected",

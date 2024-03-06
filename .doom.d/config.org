@@ -284,3 +284,9 @@ Some configurations for elfeed, mostly just auto-fetching and a global keybindin
 
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 #+end_src
+
+* eww
+At this moment, all this is doing is ensuring that emacs starts by opening urls in eww. This is mostly done for times I am running emacs outside of a Wayland/X11 session (tty). To open a url from eww in an external browser, because eww is very limited compared to graphical browsers, just hit the ampersand sign (&).
+#+begin_src elisp
+(setq browse-url-browser-function 'eww-browse-url)
+#+end_src

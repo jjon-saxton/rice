@@ -48,7 +48,7 @@ tooltip {
     border-radius: 10px;
 }
 
-#mpd,
+#mpris,
 #window,
 #clock,
 #battery,
@@ -61,7 +61,7 @@ tooltip {
     margin-top: 10px;
 }
 
-#mpd,
+#mpris,
 #pulseaudio,
 #clock {
     color: #44475a;
@@ -83,10 +83,11 @@ tooltip {
     border: 1px solid #282836;
 }
 
-#mpd {
+#pulseaudio {
     border-radius: 10px 0px 0px 10px;
     border-left: 0px;
     border-right: 0px;
+    min-width: 5px;
 }
 
 #window {
@@ -110,7 +111,7 @@ window#waybar.empty  #window{
     border-right: 0px;
 }
 
-#pulseaudio {
+#mpris {
     border-radius: 0px 0px 0px 0px;
     border-left: 0px;
     border-right: 0px;

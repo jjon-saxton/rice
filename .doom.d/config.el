@@ -181,3 +181,5 @@
 (global-set-key (kbd "M-r") 'elfeed)
 
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
+
+(setq browse-url-browser-function 'eww-browse-url)
