@@ -11,6 +11,7 @@
 - [[#transparency][Transparency]]
 - [[#mu4e][mu4e]]
 - [[#elfeed][elfeed]]
+- [[#eww][eww]]
 
 * Introduction
 This begins our Emacs configuration by setting font sizes! Use `org-babel-tangle` (C-c C-v t) whenever this is modified to save changes to the configuration then run 'doom sync' in a terminal and/or 'doom/refresh' in Emacs to reload the configuration.
@@ -136,7 +137,7 @@ Sets up the Emacs Multimedia System for playing audio, hopefully
 (add-to-list 'emms-player-list 'emms-player-mpd)
 (emms-mode-line-mode 1)
 (emms-playing-time-mode 1)
-(setq emms-source-file-default-directory "/mnt/plex/Music/"
+(setq emms-source-file-default-directory "~/Music/"
       emms-playlist-buffer-name "*Music*"
       emms-player-mpd-server-name "localhost"
       emms-player-mpd-server-port "6600"

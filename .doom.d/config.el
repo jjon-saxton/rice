@@ -73,7 +73,7 @@
 (add-to-list 'emms-player-list 'emms-player-mpd)
 (emms-mode-line-mode 1)
 (emms-playing-time-mode 1)
-(setq emms-source-file-default-directory "/mnt/plex/Music/"
+(setq emms-source-file-default-directory "~/Music/"
       emms-playlist-buffer-name "*Music*"
       emms-player-mpd-server-name "localhost"
       emms-player-mpd-server-port "6600"
