@@ -77,7 +77,7 @@
       emms-playlist-buffer-name "*Music*"
       emms-player-mpd-server-name "localhost"
       emms-player-mpd-server-port "6600"
-      emms-player-mpd-music-directory "/mnt/plex/Music/"
+      emms-player-mpd-music-directory "/srv/plex/Music/"
       emms-info-asynchronously t
       emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
 (emms-player-mpd-connect)
