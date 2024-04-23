@@ -1,6 +1,8 @@
 (setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 12)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12))
+      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 12)
+      display-time-24hr-format 1)
 (minimap-mode 1)
+(display-time-mode 1)
 
 ;;Dired config!
 (defun mydired-sort ()
@@ -145,40 +147,31 @@
 
 (setq display-line-numbers-type t)
 
-(require `mu4e)
-
 (setq mu4e-search-skip-duplicates t)
 
-(setq mu4e-get-mail-command "offlineimap")
+(setq +mu4e-backend 'offlineimap)
 
-(setq mu4e-contexts
-      `(, (make-mu4e-context
-           :name "Primary"
-           :match-func (lambda(msg) (when msg
-                                      (string-prefix-p "/Primary" (mu4e-message-field msg :maildir))))
-           :vars `(
-                   (mu4e-trash-folder . "/Primary/Deleted Messages")
-                   (mu4e-refile-folder . "/Primary/Archive")
-                   ))
-          , (make-mu4e-context
-             :name "Live"
-             :match-func (lambda (msg) (when msg
-                                         (string-prefix-p "/Live" (mu4e-message-field msg :maildir))))
-             :vars '(
-                     (mu4e-trash-folder . "/Live/Deleted")
-                     (mu4e-refile-folder . "/Live/Archive")
-                     ))
-            ))
+(set-email-account! "Primary"
+                    '((mu4e-trash-folder . "/Primary/Deleted Messages")
+                      (mu4e-refile-folder . "/Primary/Archive"))
+                    t)
 
-(setq sendmail-program "/usr/bin/msmtp"
+(set-email-account! "Live"
+                    '((mu4e-trash-folder . "/Live/Deleted")
+                      (mu4e-refile-folder . "/Live/Archive"))
+                    t)
+
+(after! mu4e
+  (setq sendmail-program "/usr/bin/msmtp"
       send-mail-function 'smtpmail-send-it
       message-sendmail-f-is-evil t
       message-sendmail-extra-arguments '("--read-envelope-from")
       message-send-mail-function 'message-send-mail-with-sendmail)
+)
 
-(global-set-key  (kbd "M-m") 'mu4e)
-
-(global-set-key (kbd "M-r") 'elfeed)
+(map! :leader
+      (:prefix ("o" . "open")
+       :desc "elfeed RSS Reader" "*" #'elfeed))
 
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 
