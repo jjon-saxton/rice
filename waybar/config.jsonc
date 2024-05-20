@@ -69,7 +69,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{: %d %b   %H:%M}",
+        "format": " {:%d %b   %H:%M}",
         "tooltip-format": "<big>{:%Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
      "pulseaudio": {

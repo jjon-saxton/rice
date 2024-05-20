@@ -247,8 +247,6 @@ With Emacs version 29, true transparency has been added, I am not sure this line
 * mu4e
 Configures mu4e as a mail client using offlineimap as the backend. Also put the display line number setting here for some reason. Should probably move that
 #+begin_src  elisp
-(setq mu4e-search-skip-duplicates t)
-
 (setq +mu4e-backend 'offlineimap)
 
 (set-email-account! "Primary"

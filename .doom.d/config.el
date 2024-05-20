@@ -147,8 +147,6 @@
 
 (setq display-line-numbers-type t)
 
-(setq mu4e-search-skip-duplicates t)
-
 (setq +mu4e-backend 'offlineimap)
 
 (set-email-account! "Primary"
