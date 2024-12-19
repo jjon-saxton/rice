@@ -134,7 +134,7 @@ ex ()
   fi
 }
 
-neofetch
+fastfetch
 
 export EDITOR="vim"
 export PATH="$HOME/.emacs.d/bin:$PATH"

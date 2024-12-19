@@ -112,10 +112,7 @@ Also adding a few keybindings for when peep-dired-mode is enabled
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 #+end_src
 
-We also get some file icons set up in dired
-#+begin_src elisp
-(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
-#+end_src
+Dired icons were broken, and I removed them mostly because I interact more with emacs/dired in a tty where they didn't work anyway. /Might/ investigate adding back if I end up using Wayland more
 
 Let's direct dired-open to some more sensible apps for some files.
 #+begin_src elisp
@@ -173,14 +170,14 @@ Sets my identity for some functions.
 #+begin_src elisp
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Jon Saxton"
-      user-mail-address "kawaii_kisachan@live.com")
+(setq user-full-name "Yayoi Shizumi"
+      user-mail-address "yayoi_chi@icloud.com")
 #+end_src
 * Theme
 Sets the doom emacs theme!
 #+begin_src elisp
 
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-gruvbox)
 
 #+end_src
 
@@ -252,11 +249,6 @@ Configures mu4e as a mail client using offlineimap as the backend. Also put the 
 (set-email-account! "Primary"
                     '((mu4e-trash-folder . "/Primary/Deleted Messages")
                       (mu4e-refile-folder . "/Primary/Archive"))
-                    t)
-
-(set-email-account! "Live"
-                    '((mu4e-trash-folder . "/Live/Deleted")
-                      (mu4e-refile-folder . "/Live/Archive"))
                     t)
 
 (after! mu4e

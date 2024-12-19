@@ -57,8 +57,6 @@
 
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 
-(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
-
 (setq dired-open-extensions '(("gif" . "feh")
                              ("jpg" . "feh")
                              ("png" . "feh")
@@ -95,10 +93,10 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Jon Saxton"
-      user-mail-address "kawaii_kisachan@live.com")
+(setq user-full-name "Yayoi Shizumi"
+      user-mail-address "yayoi_chi@icloud.com")
 
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-gruvbox)
 
 (after! org
   (require 'org-bullets)
@@ -152,11 +150,6 @@
 (set-email-account! "Primary"
                     '((mu4e-trash-folder . "/Primary/Deleted Messages")
                       (mu4e-refile-folder . "/Primary/Archive"))
-                    t)
-
-(set-email-account! "Live"
-                    '((mu4e-trash-folder . "/Live/Deleted")
-                      (mu4e-refile-folder . "/Live/Archive"))
                     t)
 
 (after! mu4e

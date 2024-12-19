@@ -24,6 +24,7 @@ settings:
   content.javascript.enabled:
     global: true
   content.notifications.enabled:
+    https://devcodef1.com: false
     https://www.reddit.com: false
   content.private_browsing:
     global: false

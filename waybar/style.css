@@ -13,7 +13,7 @@ window#waybar {
 }
 
 tooltip {
-    background: #282a36;
+    background: rgb(48,48,48);
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
@@ -22,7 +22,7 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: #bd93c6;
+    color: rgb(242,140,42);
     margin-right: 5px;
 }
 
@@ -38,13 +38,13 @@ tooltip {
 
 #workspaces button.urgent {
     color: #11111b;
-    background: #50fa7b;
+    background: rgb(242,140,42);
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    color: #44475a;
-    background: #ff79c6;
+    color: rgb(48,48,48);
+    background: #8be9fd;
     border-radius: 10px;
 }
 
@@ -64,9 +64,9 @@ tooltip {
 #mpris,
 #pulseaudio,
 #clock {
-    color: #44475a;
-    background: #bd93f9;
-    border: 1px solid #bd93f9;
+    color: rgb(48,48,48);
+    background: #8be9fd;
+    border: 1px solid #8be9fd;
 }
 
 #tray {
@@ -75,12 +75,12 @@ tooltip {
 }
 
 #workspaces {
-    background: #282a36;
+    background: rgb(48,48,48);
     border-radius: 10px;
     margin-left: 10px;
     padding-right: 0px;
     padding-left: 5px;
-    border: 1px solid #282836;
+    border: 1px solid rgb(48,48,48);
 }
 
 #pulseaudio {
@@ -91,8 +91,8 @@ tooltip {
 }
 
 #window {
-    color: #50fa7b;
-    background: #282a36;
+    color: #88f0a4;
+    background: rgb(48,48,48);
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 60px;
@@ -108,11 +108,5 @@ window#waybar.empty  #window{
 #clock {
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
-    border-right: 0px;
-}
-
-#mpris {
-    border-radius: 0px 0px 0px 0px;
-    border-left: 0px;
     border-right: 0px;
 }
