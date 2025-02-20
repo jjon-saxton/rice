@@ -6,8 +6,8 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 0,
-    "modules-left": ["hyprland/window"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": [
         //"tray",
         //"mpd",
