@@ -96,7 +96,7 @@
 (setq user-full-name "Yayoi Shizumi"
       user-mail-address "yayoi_chi@icloud.com")
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-moonlight)
 
 (after! org
   (require 'org-bullets)

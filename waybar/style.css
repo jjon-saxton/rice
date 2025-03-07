@@ -9,11 +9,11 @@
 
 window#waybar {
     background: rgba(21, 18, 27, 0);
-    color: #bbc2cf;
+    color: #fcfcfc;
 }
 
 tooltip {
-    background: rgb(48,48,48);
+    background: #222436;
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
@@ -22,29 +22,29 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: rgb(242,140,42);
+    color: #af9fff;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #bbc2cf;
+    color: #c8d3f5;
 }
 
 #workspaces button.focused {
-    color: #bbc2cf;
-    background: #9aedfe;
+    color: #c8d3f5;
+    background: #c3e88d;
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
     color: #11111b;
-    background: rgb(242,140,42);
+    background: #ff7f7f;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    color: rgb(48,48,48);
-    background: #8be9fd;
+    color: #131421;
+    background: #af9fff;
     border-radius: 10px;
 }
 
@@ -64,9 +64,9 @@ tooltip {
 #mpris,
 #pulseaudio,
 #clock {
-    color: rgb(48,48,48);
-    background: #8be9fd;
-    border: 1px solid #8be9fd;
+    color: #131421;
+    background: #af9fff;
+    border: 1px solid #af9fff;
 }
 
 #tray {
@@ -75,12 +75,12 @@ tooltip {
 }
 
 #workspaces {
-    background: rgb(48,48,48);
+    background: #222436;
     border-radius: 10px;
     margin-left: 10px;
     padding-right: 0px;
     padding-left: 5px;
-    border: 1px solid rgb(48,48,48);
+    border: 1px solid #222436;
 }
 
 #pulseaudio {
@@ -91,8 +91,8 @@ tooltip {
 }
 
 #window {
-    color: #88f0a4;
-    background: rgb(48,48,48);
+    color: #c3e88d;
+    background: #222436;
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 60px;
