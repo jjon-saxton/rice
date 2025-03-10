@@ -28,6 +28,8 @@ settings:
     https://www.reddit.com: false
   content.private_browsing:
     global: false
+  content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: false
   editor.command:
     global:
     - emacsclient
