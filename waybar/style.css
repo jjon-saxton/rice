@@ -1,3 +1,5 @@
+@import "themes/mocha.css";
+
 * {
     border: none;
     border-radius: 0;
@@ -13,38 +15,38 @@ window#waybar {
 }
 
 tooltip {
-    background: #222436;
+    background: @base;
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
-    border-color: #11111b;
+    border-color: @mantle
 }
 
 #workspaces button {
     padding: 5px;
-    color: #af9fff;
+    color: @mauve;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #c8d3f5;
+    color: @text;
 }
 
 #workspaces button.focused {
-    color: #c8d3f5;
-    background: #c3e88d;
+    color: @text;
+    background: @green;
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #ff7f7f;
+    color: @mantle;
+    background: @red;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    color: #131421;
-    background: #af9fff;
+    color: @base;
+    background: @mauve;
     border-radius: 10px;
 }
 
@@ -64,9 +66,9 @@ tooltip {
 #mpris,
 #pulseaudio,
 #clock {
-    color: #131421;
-    background: #af9fff;
-    border: 1px solid #af9fff;
+    color: @base;
+    background: @mauve;
+    border: 1px solid @mauve;
 }
 
 #tray {
@@ -75,12 +77,12 @@ tooltip {
 }
 
 #workspaces {
-    background: #222436;
+    background: @base;
     border-radius: 10px;
     margin-left: 10px;
     padding-right: 0px;
     padding-left: 5px;
-    border: 1px solid #222436;
+    border: 1px solid @base;
 }
 
 #pulseaudio {
@@ -91,8 +93,8 @@ tooltip {
 }
 
 #window {
-    color: #c3e88d;
-    background: #222436;
+    color: @green;
+    background: @base;
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 60px;

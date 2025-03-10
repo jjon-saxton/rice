@@ -54,5 +54,6 @@
 (package! dired-subtree)
 ;(package! dmenu)
 ;(package! exwm)
+(package! catppuccin-theme)
 (package! org-bullets)
 (package! org-journal)

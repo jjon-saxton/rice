@@ -177,7 +177,8 @@ Sets my identity for some functions.
 Sets the doom emacs theme!
 #+begin_src elisp
 
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'catppuccin)
+(setq catppuccin-flavor 'macchiato)
 
 #+end_src
 
