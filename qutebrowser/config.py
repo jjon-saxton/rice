@@ -10,7 +10,31 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
-import dracula.draw
+import catppuccin
+
+# load your autoconfig, use this, if the rest of your config is empty!
+config.load_autoconfig()
+
+# set the flavor you'd like to use
+# valid options are 'mocha', 'macchiato', 'frappe', and 'latte'
+# last argument (optional, default is False): enable the plain look for the menu rows
+catppuccin.setup(c, 'macchiato', True)
+
+import os
+from urllib.request import urlopen
+
+# load your autoconfig, use this, if the rest of your config is empty!
+config.load_autoconfig()
+
+if not os.path.exists(config.configdir / "theme.py"):
+    theme = "https://raw.githubusercontent.com/catppuccin/qutebrowser/main/setup.py"
+    with urlopen(theme) as themehtml:
+        with open(config.configdir / "theme.py", "a") as file:
+            file.writelines(themehtml.read().decode("utf-8"))
+
+if os.path.exists(config.configdir / "theme.py"):
+    import theme
+    theme.setup(c, 'mocha', True)
 # Uncomment this to still load settings configured via autoconfig.yml
 config.load_autoconfig()
 # Or uncomment this line to load settings from config.py
@@ -24,13 +48,6 @@ c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 # Setting dark mode
 #config.set("colors.webpage.darkmode.enabled", True)
 #config.set("colors.webpage.preferred_color_scheme", "dark")
-
-dracula.draw.blood(c, {
-                      'spacing':{
-                        'vertical':6,
-                        'horizontal':8
-                    }
-})
 
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
