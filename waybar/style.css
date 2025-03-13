@@ -24,12 +24,12 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: @mauve;
+    color: @text;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: @text;
+    color: @muave;
 }
 
 #workspaces button.focused {
@@ -53,6 +53,7 @@ tooltip {
 #mpris,
 #window,
 #clock,
+#custom-notification,
 #battery,
 #pulseaudio,
 #network,
@@ -65,10 +66,11 @@ tooltip {
 
 #mpris,
 #pulseaudio,
-#clock {
-    color: @base;
-    background: @mauve;
-    border: 1px solid @mauve;
+#clock,
+#custom-notification {
+    color: @text;
+    background: @base;
+    border: 1px solid @base;
 }
 
 #tray {
@@ -107,7 +109,7 @@ window#waybar.empty  #window{
     background-color: transparent;
 }
 
-#clock {
+#custom-notification {
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
     border-right: 0px;
