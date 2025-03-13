@@ -24,12 +24,12 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: @text;
+    color: @overlay0;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: @muave;
+    color: @mauve;
 }
 
 #workspaces button.focused {
